@@ -46,7 +46,7 @@
          if (sessionError) throw sessionError;
 
          if (session && session.user) {
-           window.location.href = "indexallrecipes.html";
+           window.location.href = "indexallrecipe.html";
          } else {
            const { error: signInError } = await supabase.auth.signInWithOAuth({
              provider: "google",
