@@ -36,31 +36,32 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
    const viewAllBtn = document.getElementById("view-all-btn");
 
-   if (viewAllBtn) {
-     viewAllBtn.addEventListener("click", async () => {
-       try {
-         const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+if (viewAllBtn) {
+  viewAllBtn.addEventListener("click", async () => {
+    try {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
-         if (sessionError) throw sessionError;
+      if (sessionError) throw sessionError;
 
-         if (session && session.user) {
-           window.location.href = "https:/www.sherapshomemadekitchenette.blog/indexallrecipe.html";
-         } else {
-           const { error: signInError } = await supabase.auth.signInWithOAuth({
-             provider: "google",
-             options: {
-               redirectTo: "https://www.sherapshomemadekitchenette.blog/indexallrecipe.html"
-             }
-           });
+      if (session && session.user) {
+        window.location.href = "https://www.sherapshomemadekitchenette.blog/indexallrecipe.html";
+      } else {
+        const { error: signInError } = await supabase.auth.signInWithOAuth({
+          provider: "google",
+          options: {
+            redirectTo: "https://www.sherapshomemadekitchenette.blog/indexallrecipe.html"
+          }
+        });
 
-           if (signInError) throw signInError;
-         }
-       } catch (error) {
-         console.error("Google login failed:", error.message);
-         alert("Login error: " + error.message);
-       }
-     });
-   }
+        if (signInError) throw signInError;
+      }
+    } catch (error) {
+      console.error("Google login failed:", error.message);
+      alert("Login error: " + error.message);
+    }
+  });
+}
+
  });
  window.addEventListener('storage', (event) => {
   if (event.key === 'supabase.auth.token') {
