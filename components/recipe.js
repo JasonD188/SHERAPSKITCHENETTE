@@ -2,7 +2,9 @@
  const SUPABASE_URL = 'https://ypnxvddfxubgbqogxmuy.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlwbnh2ZGRmeHViZ2Jxb2d4bXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwOTAzNDIsImV4cCI6MjA1OTY2NjM0Mn0.J-ggygd9rFO8mSEMmJ7o_EasckNGUAXhoffGQKuEZEg';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+if (window.location.hash.includes('access_token')) {
+  history.replaceState(null, '', window.location.pathname);
+}
  document.addEventListener("DOMContentLoaded", () => {
 
    document.querySelectorAll('.toggle_btn').forEach(button => {
