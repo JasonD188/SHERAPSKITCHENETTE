@@ -46,12 +46,12 @@
          if (sessionError) throw sessionError;
 
          if (session && session.user) {
-           window.location.href = "https://recipes.example.com/indexallrecipe.html";
+           window.location.href = "https:/www.sherapshomemadekitchenette.blog/indexallrecipe.html";
          } else {
            const { error: signInError } = await supabase.auth.signInWithOAuth({
              provider: "google",
              options: {
-               redirectTo: `${window.location.origin}/indexallrecipe.html`
+               redirectTo: `${window.location.origin}indexallrecipe.html`
              }
            });
 
